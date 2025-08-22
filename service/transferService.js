@@ -1,5 +1,6 @@
 const { transfers } = require('../model/transferModel');
 const { findUserByUsername } = require('./userService');
+//const transferService = require('../../services/transferService');
 
 function transfer({ from, to, amount }) {
   if (!from || !to || typeof amount !== 'number' || amount <= 0) {
@@ -7,6 +8,7 @@ function transfer({ from, to, amount }) {
   }
   const sender = findUserByUsername(from);
   const recipient = findUserByUsername(to);
+
   if (!sender || !recipient) {
     throw new Error('Usuário remetente ou destinatário não encontrado');
   }
